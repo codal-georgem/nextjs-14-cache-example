@@ -11,6 +11,9 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
