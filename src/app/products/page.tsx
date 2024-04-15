@@ -1,11 +1,7 @@
 import { getProducts } from "@/lib/db";
-import { sql } from "@vercel/postgres";
-// import { unstable_noStore as noStore } from "next/cache";
 import { Suspense } from "react";
 
-async function Products() {
-  // noStore();
-  // const data = await sql`SELECT * FROM Products`;
+async function ProductQunatity() {
   const data = await getProducts();
   return (
     <ul className="pl-10">
@@ -16,12 +12,12 @@ async function Products() {
   );
 }
 
-export default function Page() {
+export default async function Products() {
   return (
-    <section className="container">
-      <h1 className="text-2xl font-bold">Product</h1>
+    <section>
+      <h1>Products</h1>
       <Suspense fallback={null}>
-        <Products />
+        <ProductQunatity />
       </Suspense>
     </section>
   );

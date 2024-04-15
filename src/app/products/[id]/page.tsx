@@ -1,22 +1,18 @@
-import { getProductNoStore } from "@/lib/db";
+import { getProduct } from "@/lib/db";
+import { notFound } from "next/navigation";
 
-async function ProductQunatity() {
-  const data: { products: { id: number; title: string }[] } =
-    await getProductNoStore();
-  return (
-    <ul className="pl-10">
-      {data?.products?.map((product) => (
-        <li key={product?.id}>{product?.title}</li>
-      ))}
-    </ul>
-  );
-}
+export default async function Page({ params }: { params: { id: string } }) {
+  const data = await getProduct(params.id);
 
-export default function Page() {
+  if (!data?.data) {
+    notFound();
+  }
+
   return (
     <section className="container">
-      <h1 className="text-2xl font-bold">Unstable Cache: Product</h1>
-      <ProductQunatity />
+      <h1 className="text-2xl font-bold">{data?.data?.id}</h1>
+      <p>{data?.data?.name}</p>
+      <p>{data?.data?.price}</p>
     </section>
   );
 }

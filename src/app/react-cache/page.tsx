@@ -1,11 +1,10 @@
+import { sql } from "@vercel/postgres";
 import { cache } from "react";
 
 const getProduct = cache(async (id: number) => {
-  console.log("getProduct", id);
-  return {
-    id,
-    name: "Apple",
-  };
+  console.log("getProducts", id);
+  const data = await sql`SELECT * FROM Products WHERE id=${id}`;
+  return data?.rows?.[0];
 });
 
 export async function generateMetaData() {
