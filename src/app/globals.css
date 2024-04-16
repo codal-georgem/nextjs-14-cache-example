@@ -71,7 +71,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground flex flex-col h-screen;
+    @apply bg-background text-foreground flex flex-col h-screen px-10;
   }
 }
 
@@ -96,5 +96,5 @@ footer {
 }
 
 main {
-  @apply flex-grow-[1];
+  @apply flex-grow-[1] flex-col justify-center items-center;
 }
