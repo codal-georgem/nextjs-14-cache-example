@@ -1,9 +1,9 @@
 import { getProduct } from "@/lib/db";
 
 async function ProductQunatity() {
-  const data = await getProduct();
+  const data = await getProduct(1);
 
-  return <h1>{data?.stock}</h1>;
+  return <h1>{data?.data?.stock}</h1>;
 }
 
 export default function Page() {
